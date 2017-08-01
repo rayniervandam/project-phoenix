@@ -1,0 +1,19 @@
+<md-toolbar color="primary">
+  <span class="md-toolbar-logo"><img src="assets\img\skimlogo.png" /></span>
+  <span class="md-toolbar-slogan">Expect great answers</span>
+  <span class="md-toolbar-spacer"></span>
+  <button md-button>Overview</button>
+  <button md-button routerLink="main">Dashboard</button>
+  <button md-button [mdMenuTriggerFor]="data">Data</button>
+  <md-menu #data="mdMenu" [overlapTrigger]="false">
+    <button md-menu-item>Attributes</button>
+    <button md-menu-item>Respondents</button>
+    <button md-menu-item>Products</button>
+  </md-menu>
+  <button md-button [mdMenuTriggerFor]="modules">Modules</button>
+  <md-menu #modules="mdMenu" [overlapTrigger]="false">
+    <button md-menu-item>Output Summary</button>
+    <button md-menu-item>Unilateral Price Change</button>
+  </md-menu>
+  <a md-button routerLink="settings">Settings</a>
+</md-toolbar>

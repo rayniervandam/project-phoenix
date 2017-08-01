@@ -1,0 +1,16 @@
+<div class="content-container">
+  <md-card>
+    <form class="example-form">
+      <md-input-container class="example-full-width">
+        <input mdInput placeholder="Project Name" value="Imperial Tobacco">
+      </md-input-container>
+
+      <table class="example-full-width" cellspacing="0"><tr>
+        <td><md-input-container class="example-full-width">
+          <input mdInput #postalCode maxlength="4" placeholder="Project Reference" value="5234">
+          <md-hint align="end">{{postalCode.value.length}} / 4</md-hint>
+        </md-input-container></td>
+      </tr></table>
+    </form>
+  </md-card>
+</div>

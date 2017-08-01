@@ -1,0 +1,47 @@
+<md-toolbar color="accent" class="md-toolbar-small">
+  <span class="md-toolbar-spacer"></span>
+  <span>
+    <button md-mini-fab><md-icon>check</md-icon></button>
+    <button md-mini-fab><md-icon>vertical_align_bottom</md-icon></button>
+    <button md-mini-fab><md-icon>filter_list</md-icon></button>
+    <button md-mini-fab><md-icon>add</md-icon></button>
+    <button md-mini-fab><md-icon>swap_vert</md-icon></button>
+    <button md-mini-fab><md-icon>list</md-icon></button>
+    <button md-mini-fab><md-icon>help</md-icon></button>
+  </span>
+</md-toolbar>
+<div class="content-container">
+  <div class="dashboard-data-table-container">
+    <div class="dashboard-data-table">
+      <div class="dashboard-data-table-header">
+        <div class="dashboard-data-table-cell">
+          #
+        </div>
+        <div class="dashboard-data-table-cell" *ngFor="let outputColumn of data[0].output; let x = index">
+          Output {{ x }}
+        </div>
+      </div>
+      <div class="dashboard-data-table-row" *ngFor="let tableRow of data; let y = index">
+        <div class="dashboard-data-table-cell">
+          Sku {{ y+1 }}
+        </div>
+        <div class="dashboard-data-table-cell" *ngFor="let outputColumn of tableRow.output; let x = index">
+          {{ outputColumn.value.toFixed(2) }}
+        </div>
+      </div>
+    </div>
+    <div class="dashboard-data-table-spacer"></div>
+    <div class="dashboard-data-table">
+      <div class="dashboard-data-table-header">
+        <div class="dashboard-data-table-cell" *ngFor="let inputColumn of data[0].input; let x = index">
+          Input {{ x }}
+        </div>
+      </div>
+      <div class="dashboard-data-table-row" *ngFor="let tableRow of data; let y = index">
+        <div class="dashboard-data-table-cell" *ngFor="let inputColumn of tableRow.input; let x = index; trackBy: trackByFn">
+          <input [(ngModel)]="inputColumn.value" type="text" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

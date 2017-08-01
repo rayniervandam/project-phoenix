@@ -1,0 +1,90 @@
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+$skim-primary: (
+  50: #1c6d7d,
+  100: #1c6d7d,
+  200: #1c6d7d,
+  300: #1c6d7d,
+  400: #1c6d7d,
+  500: #1c6d7d,
+  600: #1c6d7d,
+  700: #1c6d7d,
+  800: #1c6d7d,
+  900: #1c6d7d,
+  A100: #1c6d7d,
+  A200: #1c6d7d,
+  A400: #1c6d7d,
+  A700: #1c6d7d,
+  contrast: (
+    50: white,
+    100: white,
+    200: white,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: white,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$skim-secondary: (
+  50: #ef7b26,
+  100: #ef7b26,
+  200: #ef7b26,
+  300: #ef7b26,
+  400: #ef7b26,
+  500: #ef7b26,
+  600: #ef7b26,
+  700: #ef7b26,
+  800: #ef7b26,
+  900: #ef7b26,
+  A100: #ef7b26,
+  A200: #ef7b26,
+  A400: #ef7b26,
+  A700: #ef7b26,
+  contrast: (
+    50: white,
+    100: white,
+    200: white,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: white,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$skim-app-primary: mat-palette($skim-primary);
+$skim-app-accent:  mat-palette($skim-secondary, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$skim-app-warn:    mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$skim-app-theme: mat-light-theme($skim-app-primary, $skim-app-accent, $skim-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($skim-app-theme);
