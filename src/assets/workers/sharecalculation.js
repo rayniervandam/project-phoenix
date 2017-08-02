@@ -41,20 +41,6 @@ this.onmessage = function(e) {
     selectedFilter = e.data[5];
     weights = e.data[6];
 
-    console.log('sim input');
-    console.info('----------');
-    console.log(e.data[1]);
-    console.info('----------');
-    console.log(e.data[2]);
-    console.info('----------');
-    console.log(e.data[3]);
-    console.info('----------');
-    console.log(e.data[4]);
-    console.info('----------');
-    console.log(e.data[5]);
-    console.info('----------');
-    console.log(e.data[6]);
-
     // Sort respondents
     // TODO: We sort the respondents now, because the weights need them to be in order. However this is not efficient.
     respondents.sort(function(a, b) { return a.respondentNumber - b.respondentNumber; });
