@@ -14,6 +14,8 @@ export class SimulatorDashboardMainComponent implements OnInit {
 
   public worker;
 
+  public dataReady = false;
+
   public attributes = { attributeList:
                         [{ levels: [2, 3, 4], type: 'Interpolation', name: "Price" },
                          { levels: ['UPC', 'Ziggo'], type: 'Category', name: "Provider" }]
@@ -1570,6 +1572,7 @@ export class SimulatorDashboardMainComponent implements OnInit {
         this.shares = result.data.message;
 
         // Manually trigger change detection because .onmessage isn't in zone.js
+        this.dataReady = true;
         this.changeDetectorRef.detectChanges();
       }
     };

@@ -11,7 +11,8 @@
   </span>
 </md-toolbar>
 <div class="content-container">
-  <div class="dashboard-data-table-container">
+  <md-card *ngIf="!dataReady">Loading...</md-card>
+  <div *ngIf="dataReady" class="dashboard-data-table-container">
     <div class="dashboard-data-table">
       <div class="dashboard-data-table-header">
         <div class="dashboard-data-table-cell">
