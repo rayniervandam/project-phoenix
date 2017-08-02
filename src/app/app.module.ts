@@ -19,6 +19,7 @@ import { MdButtonModule } from '@angular/material';
 import { MdIconModule } from '@angular/material';
 import { MdMenuModule } from '@angular/material';
 import { MdInputModule } from '@angular/material';
+import { MdProgressBarModule } from '@angular/material';
 import 'hammerjs';
 
 // Components
@@ -74,7 +75,8 @@ const appRoutes: Routes = [
     MdButtonModule,
     MdIconModule,
     MdMenuModule,
-    MdInputModule
+    MdInputModule,
+    MdProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
-  selector: 'app-simulator-dashboard-Main',
-  templateUrl: './simulator-dashboard-Main.component.html',
-  styleUrls: ['./simulator-dashboard-Main.component.css']
+  selector: 'app-simulator-dashboard-main',
+  templateUrl: './simulator-dashboard-main.component.html',
+  styleUrls: ['./simulator-dashboard-main.component.css']
 })
 export class SimulatorDashboardMainComponent implements OnInit {
 

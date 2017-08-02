@@ -104,3 +104,7 @@ body {
     color: white;
     font-weight: bold;
 }
+
+.mat-progress-bar-buffer {
+  background-color: #ececec !important;
+}

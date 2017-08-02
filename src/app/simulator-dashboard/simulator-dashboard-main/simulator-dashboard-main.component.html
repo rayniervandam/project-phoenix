@@ -11,7 +11,9 @@
   </span>
 </md-toolbar>
 <div class="content-container">
-  <md-card *ngIf="!dataReady">Loading...</md-card>
+  <md-card *ngIf="!dataReady">
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+  </md-card>
   <div *ngIf="dataReady" class="dashboard-data-table-container">
     <div class="dashboard-data-table">
       <div class="dashboard-data-table-header">
