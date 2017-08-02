@@ -254,7 +254,7 @@ function calculateSharesForProducts(changedProducts) {
         if (typeof productExponent === 'undefined' || !simulator.useProductExponents)
           productExponent = simulator.exponent;
 
-        exponents[a] = products[a].distribution * weights.productWeights[a] * Math.exp(productExponent * respondentUtilities[x][a]);
+        exponents[a] = products[a].distribution * 1 * Math.exp(productExponent * respondentUtilities[x][a]);
 
       } else {
         exponents[a] = 0;
@@ -358,8 +358,8 @@ function calculateSharesForProducts(changedProducts) {
 
     // Then we calculate the share of the total for each product for this respondent and add it to the total
     for (f = 0; f < filteredExponentObjectArray.length; f++) {
-      tempShares[filteredExponentObjectArray[f].product] += weights.respondentWeights[x] * (filteredExponentObjectArray[f].exponent / totalFilteredExponent);
-      respondentShares[x][filteredExponentObjectArray[f].product] = weights.respondentWeights[x] * (filteredExponentObjectArray[f].exponent / totalFilteredExponent);
+      tempShares[filteredExponentObjectArray[f].product] += 1 * (filteredExponentObjectArray[f].exponent / totalFilteredExponent);
+      respondentShares[x][filteredExponentObjectArray[f].product] = 1 * (filteredExponentObjectArray[f].exponent / totalFilteredExponent);
     }
 
     postMessage({ type: 'update', message: x + 1 });
