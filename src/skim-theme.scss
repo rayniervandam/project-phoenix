@@ -6,17 +6,19 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
+$skim-primary-colour: #1c6d7d;
+
 $skim-primary: (
-  50: #1c6d7d,
-  100: #1c6d7d,
-  200: #1c6d7d,
-  300: #1c6d7d,
-  400: #1c6d7d,
-  500: #1c6d7d,
-  600: #1c6d7d,
-  700: #1c6d7d,
-  800: #1c6d7d,
-  900: #1c6d7d,
+  50: lighten($skim-primary-colour, 50%),
+  100: lighten($skim-primary-colour, 40%),
+  200:lighten($skim-primary-colour, 30%),
+  300: lighten($skim-primary-colour, 20%),
+  400: lighten($skim-primary-colour, 10%),
+  500: $skim-primary-colour,
+  600: darken($skim-primary-colour, 10%),
+  700: darken($skim-primary-colour, 20%),
+  800: darken($skim-primary-colour, 30%),
+  900: darken($skim-primary-colour, 40%),
   A100: #1c6d7d,
   A200: #1c6d7d,
   A400: #1c6d7d,

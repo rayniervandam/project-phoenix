@@ -14,7 +14,7 @@ export class SimulatorDashboardMainComponent implements OnInit {
 
   public worker;
 
-  public dataReady = false;
+  public dataReady = true;
 
   public attributes = { attributeList:
                         [{ levels: [2, 3, 4], type: 'Interpolation', name: "Price" },
