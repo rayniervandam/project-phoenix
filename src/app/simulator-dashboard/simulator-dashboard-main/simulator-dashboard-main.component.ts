@@ -8,7 +8,7 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class SimulatorDashboardMainComponent implements OnInit {
 
-  public shares = Array.apply(null, Array(500)).map(Number.prototype.valueOf,0);
+  public shares = Array(500);
   public data = [];
   public changeDetectorRef;
 

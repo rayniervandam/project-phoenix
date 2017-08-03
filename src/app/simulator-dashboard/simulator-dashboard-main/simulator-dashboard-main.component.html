@@ -27,7 +27,7 @@
           Sku {{ y+1 }}
         </div>
         <div class="dashboard-data-table-cell">
-          {{ share.toFixed(2) }}%
+          {{ share ? share.toFixed(2) + "%" : "..." }}
         </div>
       </div>
     </div>
