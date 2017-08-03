@@ -20,6 +20,7 @@ import { MdIconModule } from '@angular/material';
 import { MdMenuModule } from '@angular/material';
 import { MdInputModule } from '@angular/material';
 import { MdProgressBarModule } from '@angular/material';
+import { MdProgressSpinnerModule } from '@angular/material';
 import 'hammerjs';
 
 // Components
@@ -76,7 +77,8 @@ const appRoutes: Routes = [
     MdIconModule,
     MdMenuModule,
     MdInputModule,
-    MdProgressBarModule
+    MdProgressBarModule,
+    MdProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

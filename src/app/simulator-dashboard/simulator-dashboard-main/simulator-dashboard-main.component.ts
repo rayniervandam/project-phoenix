@@ -8,13 +8,13 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class SimulatorDashboardMainComponent implements OnInit {
 
-  public shares = [];
+  public shares = Array.apply(null, Array(500)).map(Number.prototype.valueOf,0);
   public data = [];
   public changeDetectorRef;
 
   public worker;
 
-  public dataReady = true;
+  public dataReady = false;
 
   public attributes = { attributeList:
                         [{ levels: [2, 3, 4], type: 'Interpolation', name: "Price" },
@@ -1550,7 +1550,7 @@ export class SimulatorDashboardMainComponent implements OnInit {
   }
 
   calculateShares(event) {
-
+    this.dataReady = false;
     this.worker.postMessage(['init', this.metadata, this.respondents, this.attributes, this.products, this.selectedFilter, this.selectedWeights]);
   }
 

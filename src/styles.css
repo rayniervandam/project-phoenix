@@ -55,6 +55,7 @@ body {
 .dashboard-data-table-header > .dashboard-data-table-cell {
     font-weight: 500;
     padding: 6px 10px;
+    display: flex;
 }
 .dashboard-data-table-row > .dashboard-data-table-cell {
     padding: 6px 10px;
@@ -120,4 +121,18 @@ body {
     background-color: #ef7b26 !important;
     color: white !important;
     font-weight: bold;
+}
+.dashboard-data-table-cell-spacer {
+    flex-basis: 0;
+    flex-grow: 1;
+}
+
+/* Style the md-spinner so we can use it in table header to display loading data */
+.dashboard-data-table-cell md-spinner {
+    height: 16px !important;
+    width: 16px !important;
+    display: inline-block;
+}
+.mat-progress-spinner path, .mat-spinner path {
+  stroke: #fff !important;
 }

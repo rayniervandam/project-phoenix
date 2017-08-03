@@ -11,17 +11,15 @@
   </span>
 </md-toolbar>
 <div class="content-container">
-  <md-card *ngIf="!dataReady">
-    <md-progress-bar mode="indeterminate"></md-progress-bar>
-  </md-card>
-  <div *ngIf="dataReady" class="dashboard-data-table-container">
+  <div class="dashboard-data-table-container">
     <div class="dashboard-data-table">
       <div class="dashboard-data-table-header">
         <div class="dashboard-data-table-cell">
           #
         </div>
         <div class="dashboard-data-table-cell">
-          Shares
+          <span class="dashboard-data-table-cell-spacer">Shares</span>
+          <span><md-spinner *ngIf="!dataReady"></md-spinner></span>
         </div>
       </div>
       <div class="dashboard-data-table-row" *ngFor="let share of shares; let y = index">
