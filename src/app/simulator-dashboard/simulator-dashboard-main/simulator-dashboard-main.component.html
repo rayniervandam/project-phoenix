@@ -40,7 +40,11 @@
       </div>
       <div class="dashboard-data-table-row" *ngFor="let product of products; let y = index">
         <div class="dashboard-data-table-cell" *ngFor="let data of product.attributeData; let x = index; trackBy: trackByFn">
-          <input [(ngModel)]="products[y].attributeData[x]" type="text" (ngModelChange)="calculateShares($event)" />
+          <input [(ngModel)]="products[y].attributeData[x]" type="text" (ngModelChange)="calculateShares($event)" *ngIf="attributes.attributeList[x].type == 'Interpolation'" />
+          <select [(ngModel)]="products[y].attributeData[x]" (ngModelChange)="calculateShares($event)" *ngIf="attributes.attributeList[x].type == 'Category'">
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select>
         </div>
       </div>
     </div>
