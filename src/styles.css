@@ -126,6 +126,9 @@ body {
     flex-basis: 0;
     flex-grow: 1;
 }
+.dashboard-data-table-cell-faded {
+    color: #bfbfbf !important;
+}
 
 /* Style the md-spinner so we can use it in table header to display loading data */
 .dashboard-data-table-cell md-spinner {
