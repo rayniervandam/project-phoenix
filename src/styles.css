@@ -10,12 +10,25 @@ body {
 
 /* Our custom smaller toolbar */
 .md-toolbar-small {
-    min-height: 16px !important;
-    font-size: 12px !important;
+    min-height: 36px !important;
+    font-size: 20px !important;
     background-color: #2f8fa2 !important;
 }
 .md-toolbar-small .mat-toolbar-row {
-    height: 16px !important;
+    height: 36px !important;
+}
+
+/* Style menu buttons on our custom toolbar */
+.md-toolbar-small .mat-button {
+    background-color: rgb(63, 152, 169) !important;
+    margin-right: 8px;
+}
+.mat-menu-item {
+    padding: 0px 24px !important;
+}
+hr {
+    border: 0;
+    border-bottom: 1px solid #d4d4d4;
 }
 
 /* Helper classes for toolbar positioning and styling */

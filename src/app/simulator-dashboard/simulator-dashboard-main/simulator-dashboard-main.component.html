@@ -1,4 +1,30 @@
 <md-toolbar color="accent" class="md-toolbar-small">
+  <button md-button [mdMenuTriggerFor]="simulatorMenu">Simulator</button>
+  <md-menu #simulatorMenu="mdMenu" [overlapTrigger]="false">
+    <button md-menu-item><md-icon>insert_drive_file</md-icon> New Simulator</button>
+    <button md-menu-item><md-icon>person_add</md-icon> Share Simulator</button>
+    <hr>
+    <button md-menu-item><md-icon>exit_to_app</md-icon> Exit</button>
+  </md-menu>
+  <button md-button [mdMenuTriggerFor]="settingsMenu">Settings</button>
+  <md-menu #settingsMenu="mdMenu" [overlapTrigger]="false">
+    <button md-menu-item><md-icon>description</md-icon> Project Details</button>
+    <button md-menu-item><md-icon>settings_applications</md-icon> Calculation Settings</button>
+    <hr>
+    <button md-menu-item><md-icon>view_module</md-icon> Module Settings</button>
+  </md-menu>
+  <button md-button [mdMenuTriggerFor]="exportMenu">Export</button>
+  <md-menu #exportMenu="mdMenu" [overlapTrigger]="false">
+    <button md-menu-item><md-icon>archive</md-icon> Shares</button>
+    <hr>
+    <button md-menu-item><md-icon>archive</md-icon> Attribute Data</button>
+    <button md-menu-item><md-icon>archive</md-icon> Respondent Data</button>
+    <button md-menu-item><md-icon>archive</md-icon> Product Data</button>
+  </md-menu>
+  <button md-button [mdMenuTriggerFor]="helpMenu">Help</button>
+  <md-menu #helpMenu="mdMenu" [overlapTrigger]="false">
+    <button md-menu-item><md-icon>help</md-icon> Manual</button>
+  </md-menu>
   <span class="md-toolbar-spacer"></span>
   <span>
     <button md-mini-fab><md-icon>check</md-icon></button>
