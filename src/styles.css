@@ -113,6 +113,7 @@ body {
     padding: 5px 10px;
     position: relative;
     width: calc(100% + 20px);
+    height: 28px;
 }
 .dashboard-data-table-cell select:focus {
     outline: 0;
