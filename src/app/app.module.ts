@@ -28,7 +28,8 @@ import { AppComponent } from './app.component';
 import { SimulatorDashboardComponent } from './simulator-dashboard/simulator-dashboard.component';
 import { SimulatorDashboardHeaderComponent } from './simulator-dashboard/simulator-dashboard-header/simulator-dashboard-header.component';
 import { SimulatorDashboardMainComponent } from './simulator-dashboard/simulator-dashboard-main/simulator-dashboard-main.component';
-import { SimulatorDashboardSettingsComponent } from './simulator-dashboard/simulator-dashboard-settings/simulator-dashboard-settings.component';
+import { SimulatorSetupComponent } from './simulator-setup/simulator-setup.component';
+import { SimulatorSetupHeaderComponent } from './simulator-setup/simulator-setup-header/simulator-setup-header.component';
 
 const appRoutes: Routes = [
   {
@@ -42,9 +43,13 @@ const appRoutes: Routes = [
     data: { title: 'Dashboard' },
     children: [
        { path: '', redirectTo: 'main', pathMatch: 'full' },
-       { path: 'main', component: SimulatorDashboardMainComponent },
-       { path: 'settings', component: SimulatorDashboardSettingsComponent }
+       { path: 'main', component: SimulatorDashboardMainComponent }
     ]
+  },
+  {
+    path: 'setup',
+    component: SimulatorSetupComponent,
+    data: { title: 'Setup' }
   }
 ];
 
@@ -54,7 +59,8 @@ const appRoutes: Routes = [
     SimulatorDashboardComponent,
     SimulatorDashboardHeaderComponent,
     SimulatorDashboardMainComponent,
-    SimulatorDashboardSettingsComponent
+    SimulatorSetupComponent,
+    SimulatorSetupHeaderComponent
   ],
   imports: [
     BrowserModule,

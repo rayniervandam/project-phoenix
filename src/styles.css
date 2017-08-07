@@ -189,3 +189,70 @@ hr {
 .mat-progress-spinner path, .mat-spinner path {
   stroke: #fff !important;
 }
+
+
+/* Setup page styles */
+.setup-input textarea {
+    height: 200px;
+    background-color: #fafafa;
+    padding: 8px;
+    width: calc(100% - 16px);
+}
+.setup-input {
+    width: 100%;
+    font-family: monospace;
+}
+.setup-input-title {
+    display: flex;
+    border-bottom: 1px solid #dadada;
+    font-size: 16px;
+    padding: 0px 0px 5px 5px;
+}
+.setup-input-title md-icon {
+  font-size: 16px;
+  top: 2px;
+  position: relative;
+  color: #585858;
+}
+.setup-input-title-spacer {
+    flex-basis: 0;
+    flex-grow: 1;
+}
+.setup-attribute-container {
+    display: flex;
+}
+.setup-attribute {
+    margin: 20px 8px;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+.setup-attribute-name {
+    background-color: #1c6d7d;
+    color: white;
+    padding: 8px 20px;
+}
+.setup-attribute-level {
+    padding: 10px 21px;
+    border-bottom: 1px solid #dadada;
+    text-align: center;
+}
+.setup-attribute-name-product-filter {
+    background-color: #f56731;
+}
+.setup-attribute-name-respondent-filter {
+    background-color: #ef7b26;
+}
+.setup-attribute-type {
+    padding: 2px 15px;
+    background-color: #d6d6d6;
+    font-size: 12px;
+    text-align: center;
+}
+.setup-attribute-level-container {
+    max-height: 408px;
+    overflow-y: auto;
+}
+.setup-output-nodata {
+    width: 100%;
+    padding: 26px;
+    color: #cac8c8;
+}
