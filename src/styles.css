@@ -241,7 +241,8 @@ hr {
 .setup-attribute-name {
     background-color: #1c6d7d;
     color: white;
-    padding: 8px 20px;
+    padding: 8px 16px;
+    text-align: center;
 }
 .setup-attribute-level {
     padding: 10px 21px;
@@ -261,7 +262,7 @@ hr {
     text-align: center;
 }
 .setup-attribute-level-container {
-    max-height: 408px;
+    max-height: 400px;
     overflow-y: auto;
 }
 .setup-output-nodata {
@@ -280,4 +281,20 @@ hr {
     margin-top: 7px;
     font-size: 14px;
     margin-left: -4px;
+}
+.setup-info {
+    padding: 12px;
+    border: 1px solid rgb(244, 180, 91);
+    background-color: rgb(244, 195, 105);
+    border-radius: 2px;
+    margin-bottom: 20px;
+    font-size:12px;
+}
+.setup-info-text {
+    background-color: #ffcf77;
+    margin-right: 8px;
+    padding: 4px;
+}
+.setup-info-title {
+    margin-bottom: 5px;
 }

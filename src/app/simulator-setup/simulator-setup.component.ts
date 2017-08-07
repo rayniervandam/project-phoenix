@@ -14,6 +14,8 @@ export class SimulatorSetupComponent implements OnInit {
   public attributeDataWarning = false;
   public attributeCount = 0;
 
+  public inputPage = "attributes";
+
   constructor() { }
 
   ngOnInit() {

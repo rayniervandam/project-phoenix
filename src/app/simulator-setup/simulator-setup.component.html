@@ -1,19 +1,19 @@
 <app-simulator-setup-header></app-simulator-setup-header>
 <div class="content-container">
   <div class="setup-subheader">
-    <button md-raised-button routerLink="main">
+    <button md-raised-button (click)="inputPage = 'attributes'">
       Attributes
       <md-icon *ngIf="!attributeDataValid" class="md-icon-error">error</md-icon>
       <md-icon *ngIf="attributeDataWarning" class="md-icon-warning">warning</md-icon>
       <md-icon *ngIf="attributeDataValid && !attributeDataWarning " class="md-icon-success">check</md-icon>
     </button>
-    <button md-raised-button routerLink="main">
+    <button md-raised-button (click)="inputPage = 'products'">
       Products
       <md-icon *ngIf="!attributeDataValid" class="md-icon-error">error</md-icon>
       <md-icon *ngIf="attributeDataWarning" class="md-icon-warning">warning</md-icon>
       <md-icon *ngIf="attributeDataValid && !attributeDataWarning " class="md-icon-success">check</md-icon>
     </button>
-    <button md-raised-button routerLink="main">
+    <button md-raised-button (click)="inputPage = 'respondents'">
       Respondents
       <md-icon *ngIf="!attributeDataValid" class="md-icon-error">error</md-icon>
       <md-icon *ngIf="attributeDataWarning" class="md-icon-warning">warning</md-icon>
@@ -24,29 +24,77 @@
       Complete Simulator
     </button>
   </div>
-  <md-card>
-    <div class="setup-input-title">
-      <span>Attribute List Input</span>
-      <span class="setup-input-title-spacer"></span>
-      <md-icon>help</md-icon>
-    </div>
-    <md-input-container class="setup-input mat-focused">
-      <textarea mdInput [(ngModel)]="attributeInput" (ngModelChange)="processAttributeInput($event)"></textarea>
-    </md-input-container>
-  </md-card>
-  <md-card>
-    <div class="setup-input-title">
-      <span>Attribute List Output</span>
-    </div>
-    <div class="setup-attribute-container">
-      <div class="setup-output-nodata" *ngIf="attributeOutput.length < 1">No data has been input yet.</div>
-      <div class="setup-attribute" *ngFor="let attribute of attributeOutput">
-        <div class="setup-attribute-name" [ngClass]="{'setup-attribute-name-respondent-filter': attribute.type == 'Respondent Filter', 'setup-attribute-name-product-filter': attribute.type == 'Product Filter'}">{{ attribute.name }}</div>
-        <div class="setup-attribute-type">{{ attribute.type }}</div>
-        <div  class="setup-attribute-level-container">
-          <div class="setup-attribute-level" *ngFor="let level of attribute.levels">{{ level }}</div>
+  <div *ngIf="inputPage == 'attributes'">
+    <md-card>
+      <div class="setup-input-title">
+        <span>Attribute List Input</span>
+        <span class="setup-input-title-spacer"></span>
+        <md-icon>help</md-icon>
+      </div>
+      <md-input-container class="setup-input mat-focused">
+        <textarea mdInput [(ngModel)]="attributeInput" (ngModelChange)="processAttributeInput($event)"></textarea>
+      </md-input-container>
+    </md-card>
+    <md-card>
+      <div class="setup-input-title">
+        <span>Attribute List Output</span>
+      </div>
+      <div class="setup-attribute-container">
+        <div class="setup-output-nodata" *ngIf="attributeOutput.length < 1">No data has been input yet.</div>
+        <div class="setup-attribute" *ngFor="let attribute of attributeOutput">
+          <div class="setup-attribute-name" [ngClass]="{'setup-attribute-name-respondent-filter': attribute.type == 'Respondent Filter', 'setup-attribute-name-product-filter': attribute.type == 'Product Filter'}">{{ attribute.name }}</div>
+          <div class="setup-attribute-type">{{ attribute.type }}</div>
+          <div  class="setup-attribute-level-container">
+            <div class="setup-attribute-level" *ngFor="let level of attribute.levels">{{ level }}</div>
+          </div>
         </div>
       </div>
-    </div>
-  </md-card>
+    </md-card>
+  </div>
+  <div *ngIf="inputPage == 'products'">
+    <md-card>
+      <div class="setup-info">
+        <div class="setup-info-title">Based on attribute data, expected columns are (in order):</div>
+        <span class="setup-info-text">Order</span>
+        <span class="setup-info-text">Name</span>
+        <span class="setup-info-text">Active</span>
+        <span class="setup-info-text">Distribution</span>
+        <span  class="setup-info-text" *ngFor="let attribute of attributeOutput">{{ attribute.name }}</span>
+      </div>
+      <div class="setup-input-title">
+        <span>Products Input</span>
+        <span class="setup-input-title-spacer"></span>
+        <md-icon>help</md-icon>
+      </div>
+      <md-input-container class="setup-input mat-focused">
+        <textarea mdInput [(ngModel)]="productInput" (ngModelChange)="processProductInput($event)"></textarea>
+      </md-input-container>
+    </md-card>
+    <md-card>
+      <div class="setup-input-title">
+        <span>Product Output</span>
+      </div>
+      <div class="setup-attribute-container">
+      </div>
+    </md-card>
+  </div>
+  <div *ngIf="inputPage == 'respondents'">
+    <md-card>
+      <div class="setup-input-title">
+        <span>Respondents Input</span>
+        <span class="setup-input-title-spacer"></span>
+        <md-icon>help</md-icon>
+      </div>
+      <md-input-container class="setup-input mat-focused">
+        <textarea mdInput [(ngModel)]="respondentInput" (ngModelChange)="processRespondentInput($event)"></textarea>
+      </md-input-container>
+    </md-card>
+    <md-card>
+      <div class="setup-input-title">
+        <span>Respondent Output</span>
+      </div>
+      <div class="setup-attribute-container">
+      </div>
+    </md-card>
+  </div>
 </div>
