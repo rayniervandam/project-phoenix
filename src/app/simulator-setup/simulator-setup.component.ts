@@ -10,12 +10,35 @@ export class SimulatorSetupComponent implements OnInit {
   public attributeInput = "";
   public attributeOutput = [];
 
+  public attributeDataValid = false;
+  public attributeDataWarning = false;
+  public attributeCount = 0;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  validateAttributeData() {
+    this.attributeCount = this.attributeOutput.length;
+
+    // If at least 1 attribute has been parsed, data is valid to be submitted
+    if(this.attributeCount > 0) {
+      this.attributeDataValid = true;
+
+
+    } else {
+      this.attributeDataValid = false;
+    }
+
+    // If data is valid but only 1 attribute is present, give a warning
+    this.attributeDataWarning = this.attributeDataValid && this.attributeCount < 2;
+  }
+
   processAttributeInput(event) {
+      this.attributeDataValid = false;
+      this.attributeDataWarning = false;
+
       var columnDelimiter;
 
       // Detect used delimiter (either tab or comma)
@@ -69,6 +92,9 @@ export class SimulatorSetupComponent implements OnInit {
       }
 
       this.attributeOutput = attributeList;
+
+      this.validateAttributeData();
   }
+
 
 }

@@ -1,5 +1,29 @@
 <app-simulator-setup-header></app-simulator-setup-header>
 <div class="content-container">
+  <div class="setup-subheader">
+    <button md-raised-button routerLink="main">
+      Attributes
+      <md-icon *ngIf="!attributeDataValid" class="md-icon-error">error</md-icon>
+      <md-icon *ngIf="attributeDataWarning" class="md-icon-warning">warning</md-icon>
+      <md-icon *ngIf="attributeDataValid && !attributeDataWarning " class="md-icon-success">check</md-icon>
+    </button>
+    <button md-raised-button routerLink="main">
+      Products
+      <md-icon *ngIf="!attributeDataValid" class="md-icon-error">error</md-icon>
+      <md-icon *ngIf="attributeDataWarning" class="md-icon-warning">warning</md-icon>
+      <md-icon *ngIf="attributeDataValid && !attributeDataWarning " class="md-icon-success">check</md-icon>
+    </button>
+    <button md-raised-button routerLink="main">
+      Respondents
+      <md-icon *ngIf="!attributeDataValid" class="md-icon-error">error</md-icon>
+      <md-icon *ngIf="attributeDataWarning" class="md-icon-warning">warning</md-icon>
+      <md-icon *ngIf="attributeDataValid && !attributeDataWarning " class="md-icon-success">check</md-icon>
+    </button>
+    <span class="setup-subheader-spacer"></span>
+    <button md-raised-button routerLink="/dashboard/main" color="accent" [disabled]="!(attributeDataValid && !attributeDataWarning)">
+      Complete Simulator
+    </button>
+  </div>
   <md-card>
     <div class="setup-input-title">
       <span>Attribute List Input</span>

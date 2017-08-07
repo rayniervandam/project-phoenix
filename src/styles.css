@@ -3,6 +3,19 @@ body {
     margin: 0 !important;
 }
 
+/* Icon colour styles */
+.md-icon-error {
+    color: #cc1818;
+}
+
+.md-icon-success {
+    color: #1c7d3e;
+}
+
+.md-icon-warning {
+    color: #ef7b26;
+}
+
 /* top-level content container */
 .content-container {
     padding: 24px;
@@ -255,4 +268,16 @@ hr {
     width: 100%;
     padding: 26px;
     color: #cac8c8;
+}
+.setup-subheader-spacer {
+    flex-basis: 0;
+    flex-grow: 1;
+}
+.setup-subheader {
+    display: flex;
+}
+.setup-subheader md-icon {
+    margin-top: 7px;
+    font-size: 14px;
+    margin-left: -4px;
 }
