@@ -3,24 +3,24 @@
   <div class="setup-subheader">
     <button md-raised-button (click)="inputPage = 'attributes'">
       Attributes
-      <md-icon *ngIf="!attributeDataValid" class="md-icon-error">error</md-icon>
-      <md-icon *ngIf="attributeDataWarning" class="md-icon-warning">warning</md-icon>
-      <md-icon *ngIf="attributeDataValid && !attributeDataWarning " class="md-icon-success">check</md-icon>
+      <md-icon *ngIf="!attributeParseReport.dataValid" class="md-icon-error">error</md-icon>
+      <md-icon *ngIf="attributeParseReport.dataWarning" class="md-icon-warning">warning</md-icon>
+      <md-icon *ngIf="attributeParseReport.dataValid && !attributeParseReport.dataWarning " class="md-icon-success">check</md-icon>
     </button>
     <button md-raised-button (click)="inputPage = 'products'">
       Products
-      <md-icon *ngIf="!attributeDataValid" class="md-icon-error">error</md-icon>
-      <md-icon *ngIf="attributeDataWarning" class="md-icon-warning">warning</md-icon>
-      <md-icon *ngIf="attributeDataValid && !attributeDataWarning " class="md-icon-success">check</md-icon>
+      <md-icon *ngIf="!productParseReport.dataValid" class="md-icon-error">error</md-icon>
+      <md-icon *ngIf="productParseReport.dataWarning" class="md-icon-warning">warning</md-icon>
+      <md-icon *ngIf="productParseReport.dataValid && !productParseReport.dataWarning " class="md-icon-success">check</md-icon>
     </button>
     <button md-raised-button (click)="inputPage = 'respondents'">
       Respondents
-      <md-icon *ngIf="!attributeDataValid" class="md-icon-error">error</md-icon>
-      <md-icon *ngIf="attributeDataWarning" class="md-icon-warning">warning</md-icon>
-      <md-icon *ngIf="attributeDataValid && !attributeDataWarning " class="md-icon-success">check</md-icon>
+      <md-icon *ngIf="!attributeParseReport.dataValid" class="md-icon-error">error</md-icon>
+      <md-icon *ngIf="attributeParseReport.dataWarning" class="md-icon-warning">warning</md-icon>
+      <md-icon *ngIf="attributeParseReport.dataValid && !attributeParseReport.dataWarning " class="md-icon-success">check</md-icon>
     </button>
     <span class="setup-subheader-spacer"></span>
-    <button md-raised-button routerLink="/dashboard/main" color="accent" [disabled]="!(attributeDataValid && !attributeDataWarning)">
+    <button md-raised-button routerLink="/dashboard/main" color="accent" [disabled]="!(attributeParseReport.dataValid && !attributeParseReport.dataWarning)">
       Complete Simulator
     </button>
   </div>
@@ -53,13 +53,13 @@
   </div>
   <div *ngIf="inputPage == 'products'">
     <md-card>
-      <div class="setup-info">
+      <div class="setup-info" *ngIf="attributeParseReport.dataValid">
         <div class="setup-info-title">Based on attribute data, expected columns are (in order):</div>
         <span class="setup-info-text">Order</span>
         <span class="setup-info-text">Name</span>
         <span class="setup-info-text">Active</span>
         <span class="setup-info-text">Distribution</span>
-        <span  class="setup-info-text" *ngFor="let attribute of attributeOutput">{{ attribute.name }}</span>
+        <span class="setup-info-text" *ngFor="let attribute of attributeOutput">{{ attribute.name }}</span>
       </div>
       <div class="setup-input-title">
         <span>Products Input</span>
@@ -74,7 +74,24 @@
       <div class="setup-input-title">
         <span>Product Output</span>
       </div>
-      <div class="setup-attribute-container">
+      <div class="setup-product-container">
+        <table>
+          <tr>
+            <td class="setup-product-property">Order</td>
+            <td class="setup-product-property">Name</td>
+            <td class="setup-product-property setup-product-cell-center">Active</td>
+            <td class="setup-product-property setup-product-cell-center">Distribution</td>
+            <td *ngFor="let attribute of attributeOutput" class="setup-attribute-name" [ngClass]="{'setup-attribute-name-product-filter': attribute.type == 'Product Filter'}">{{ attribute.name }}</td>
+          </tr>
+          <tr *ngFor="let product of productOutput">
+            <td>{{ product.order }}</td>
+            <td>{{ product.name }}</td>
+            <td  class="setup-product-cell-center">{{ product.active }}</td>
+            <td  class="setup-product-cell-center">{{ product.distribution }}</td>
+            <td  class="setup-product-cell-center" *ngFor="let productAttribute of product.attributeData">{{ productAttribute }}</td>
+            <td  class="setup-product-cell-center" *ngFor="let productFilter of product.filterData">{{ productFilter }}</td>
+          </tr>
+        </table>
       </div>
     </md-card>
   </div>

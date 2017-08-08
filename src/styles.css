@@ -298,3 +298,27 @@ hr {
 .setup-info-title {
     margin-bottom: 5px;
 }
+.setup-product-container tr:nth-child(even) td {
+    background-color: rgb(247, 247, 247);
+}
+.setup-product-container td {
+    padding: 2px 8px;
+    border-bottom: 1px solid #dcdcdc;
+    border-right: 2px solid #ffffff;
+}
+.setup-product-container table {
+    width: 100%;
+    border-spacing: 0;
+}
+.setup-product-container {
+    margin-top: 16px;
+    height: 500px;
+    overflow: auto;
+}
+.setup-product-cell-center {
+    text-align: center;
+}
+.setup-product-property {
+    background-color: hsla(190, 63%, 26%, 1);
+    color: white;
+}

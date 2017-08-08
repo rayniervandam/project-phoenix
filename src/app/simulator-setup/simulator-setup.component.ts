@@ -7,51 +7,55 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SimulatorSetupComponent implements OnInit {
 
+  // The models for the input and output of our data
   public attributeInput = "";
   public attributeOutput = [];
 
-  public attributeDataValid = false;
-  public attributeDataWarning = false;
-  public attributeCount = 0;
+  // Data we gather during validation of data
+  public attributeParseReport = new DataParseReport();
 
+  public productInput = "";
+  public productOutput = [];
+
+  // Data we gather during validation of data
+  public productParseReport = new DataParseReport();
+
+  // Keep track of our selected 'tab'
   public inputPage = "attributes";
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  processAttributeInput(event): void {
+    this.attributeOutput = this.parseAttributeInput(this.attributeInput);
+    this.attributeParseReport = this.validateAttributeData(this.attributeOutput);
   }
 
-  validateAttributeData() {
-    this.attributeCount = this.attributeOutput.length;
+  validateAttributeData(attributeData): DataParseReport  {
+    // Prepare our validation report
+    var attributeParseReport = new DataParseReport();
+
+    attributeParseReport.dataCount = attributeData.length;
 
     // If at least 1 attribute has been parsed, data is valid to be submitted
-    if(this.attributeCount > 0) {
-      this.attributeDataValid = true;
-
-
+    if(attributeParseReport.dataCount > 0) {
+      attributeParseReport.dataValid = true;
     } else {
-      this.attributeDataValid = false;
+      attributeParseReport.dataValid = false;
     }
 
     // If data is valid but only 1 attribute is present, give a warning
-    this.attributeDataWarning = this.attributeDataValid && this.attributeCount < 2;
+    attributeParseReport.dataWarning = attributeParseReport.dataValid && attributeParseReport.dataCount < 2;
+
+    return attributeParseReport;
   }
 
-  processAttributeInput(event) {
-      this.attributeDataValid = false;
-      this.attributeDataWarning = false;
-
-      var columnDelimiter;
-
-      // Detect used delimiter (either tab or comma)
-      if(this.attributeInput.split("	").length > 1) {
-        columnDelimiter = "	"; // tab
-      } else {
-        columnDelimiter = ",";
-      }
+  parseAttributeInput(attributeInput): Array<Object> {
+      var columnDelimiter = this.detectDelimiter(attributeInput);
 
       // Split all lines
-      var attributeLines = this.attributeInput.split('\n');
+      var attributeLines = attributeInput.split('\n');
 
       // First line should be attribute type indicators
       var attributeTypes = attributeLines[0].split(columnDelimiter);
@@ -93,10 +97,85 @@ export class SimulatorSetupComponent implements OnInit {
         }
       }
 
-      this.attributeOutput = attributeList;
-
-      this.validateAttributeData();
+      return attributeList;
   }
 
+  processProductInput(event): void {
+    this.productOutput = this.parseProductInput(this.productInput,this.attributeOutput);
+    this.productParseReport = this.validateProductData(this.productOutput);
+  }
 
+  validateProductData(productData): DataParseReport {
+    // Prepare our validation report
+    var productParseReport = new DataParseReport();
+
+    productParseReport.dataCount = productData.length;
+
+    // If at least 1 product has been parsed, data is valid to be submitted
+    if(productParseReport.dataCount > 0) {
+      productParseReport.dataValid = true;
+    } else {
+      productParseReport.dataValid = false;
+    }
+
+    // If data is valid but only 1 product is present, give a warning
+    productParseReport.dataWarning = productParseReport.dataValid && productParseReport.dataCount < 10;
+
+    return productParseReport;
+  }
+
+  parseProductInput(productInput,attributeData): Array<Object> {
+      var columnDelimiter = this.detectDelimiter(productInput);
+
+      // Split all lines
+      var productLines = productInput.split('\n');
+
+      var productList = [];
+
+      // Loop over remaining input lines and store levels in attribute objects
+      for(let x = 1; x < productLines.length; x++) {
+        var productValues = productLines[x].split(columnDelimiter);
+        var productObject = {
+          order: productValues[0],
+          name: productValues[1],
+          active: productValues[2],
+          distribution: productValues[3],
+          attributeData: [],
+          filterData: []
+        };
+
+        for(let y = 4; y < productValues.length; y++) {
+          if(attributeData[y-4].type == 'Product Filter') {
+            productObject.filterData.push(productValues[y]);
+          } else if (attributeData[y-4].type == 'Category' ||
+                     attributeData[y-4].type == 'Interpolation' ||
+                     attributeData[y-4].type == 'Slope') {
+            productObject.attributeData.push(productValues[y]);
+          }
+        }
+
+        productList.push(productObject);
+      }
+
+      return productList;
+  }
+
+  detectDelimiter(data): String {
+    var dataDelimiter;
+
+    // Detect used delimiter (either tab or comma)
+    if(data.split("	").length > 1) {
+      dataDelimiter = "	"; // tab
+    } else {
+      dataDelimiter = ",";
+    }
+
+    return dataDelimiter;
+  }
+}
+
+class DataParseReport {
+  dataValid: Boolean = false;
+  dataWarning: Boolean = false;
+  dataCount: Number = 0;
 }
